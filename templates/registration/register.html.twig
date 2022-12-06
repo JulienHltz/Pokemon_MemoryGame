@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<img id="background" src="{{asset('img/background.png')}}" alt="">
+    <section class="containerForm">
+        <div class="row">
+            <div class="col">
+            {{ form_start(registrationForm) }}
+        <h4 class="formTitle">Inscription</h4>
+        {{ form_row(registrationForm.pseudo) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+        {{ form_row(registrationForm.RGPDConsent) }}
+
+        <div id="btnLogout"><button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire</button></div>
+        <a href="{{ path('app_login') }}" >Revenir au formulaire de connexion</a>
+    {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

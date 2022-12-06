@@ -1,0 +1,46 @@
+.containerForm{
+    border: solid 0.3px;
+    padding: 3rem;
+    border-radius: 1rem;
+    background-color: rgba(173, 216, 230, 0.29);
+    width: 35%;
+    // height: ;
+
+    .formTitle{
+        font-family: 'Orbitron';
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    #btnLogin{
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0 0.6rem 0;
+    }
+
+    #btnLogout{
+        display: flex;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    label:not(:last-child){
+        margin-bottom: 1rem;
+    }
+
+    input{
+        margin-bottom: 0.7rem;
+    }
+
+    a{
+        display: block;
+        text-align: center;
+    }
+
+    input[type=checkbox]{
+        margin-top: 0.6rem;
+        margin-left: 0.5rem;
+        accent-color: orange;
+
+    }
+}

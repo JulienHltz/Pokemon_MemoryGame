@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  cursor: url("../cursor/cursor.cur"), auto;
+  overflow: hidden; /* Hide scrollbars */
+
+  button:hover {
+    // Cursor
+    cursor: url("../cursor/cursor_hover.cur"), auto;
+  }
+    i {
+      color: black;
+    }
+  }
+
