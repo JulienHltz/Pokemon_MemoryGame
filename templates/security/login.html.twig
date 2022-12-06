@@ -4,7 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<img id="background" src="{{asset('img/background.png')}}" alt="">
+
+	
+	<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
 
 	<section class="containerForm">
 		<div class="row">
@@ -46,7 +48,11 @@
 					<div id="btnLogin"><button class="btn btn-lg btn-primary" type="submit">
 						Me connecter
 					</button></div>
-					<a href="{{ path('app_register') }}">Inscription</a>
+                    
+                    <div id="subscribe">
+					<p>Pas encore inscrit ?</p>
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                    </div>
 				</form>
 			</div>
 		</div>
