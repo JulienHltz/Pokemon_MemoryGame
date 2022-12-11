@@ -30,26 +30,17 @@ nav {
         align-items: center;
         margin-left: auto;
         gap: 1rem;
-        // padding: 1rem;
     }
 
-    ul:hover {
-        transition: all 800ms;
-        color: wheat;
-
-        // i {
-        //     font-size: 0;
-        // }
-    }
 
     li{
     transition: all 800ms;
     }
 
     li:hover{
-    transform: translateY(-1px) scale(1.2);
-    margin-left: 1rem;
-    margin-right: 1rem;
+    transform: translateY(-2px) scale(1.4);
+    margin-left: 2rem;
+    margin-right: 2rem;
 
     }
 }

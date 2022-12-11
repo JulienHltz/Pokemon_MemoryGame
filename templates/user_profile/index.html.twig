@@ -3,6 +3,23 @@
 {% block title %}Profil Utilisateur{% endblock %}
 
 {% block body %}
-<img id="background" src="{{asset('img/background.png')}}" alt="">
+<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
+
+<div id="profileContainer">
+
+<div class="miniContainerProfile">
+    <h4>Bonjour {{ app.user.pseudo }} !</h4>
+    <h5><i class="fa-solid fa-medal"></i> Meilleurs scores par modes :</h5>
+    <h6><i class="fa-solid fa-star"></i></i> Memory : 895 pts</h6>
+    <h6><i class="fa-solid fa-star"></i></i> Type : 450 pts</h6>
+    <h6><i class="fa-solid fa-star"></i></i> Generation : 200 pts</h6>
+</div>
+<div class="miniContainerProfile">
+    <div class="btnProfile"><a href=""><i class="fa-solid fa-rotate"></i> Actualiser la base de données</a></div>
+    <div class="btnProfile"><a href="{{ path('app_ranking') }}"><i class="fa-solid fa-trophy"></i> Consulter le classement des joueurs</a></div>
+    <div class="btnProfile"><a href="{{ path('app_game_mode') }}"><i class="fa-solid fa-gamepad"></i> Commencer une partie</a></div>
+</div>
+
+</div>
 
 {% endblock %}

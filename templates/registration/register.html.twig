@@ -3,7 +3,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-<img id="background" src="{{asset('img/background.png')}}" alt="">
+<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
     <section class="containerForm">
         <div class="row">
             <div class="col">
@@ -16,7 +16,7 @@
         }) }}
         {{ form_row(registrationForm.RGPDConsent) }}
 
-        <div id="btnLogout"><button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire</button></div>
+        <div id="btnLogout"><button type="submit" class="btn btn-primary btn-lg my-2">M'inscrire</button></div>
         <a href="{{ path('app_login') }}" >Revenir au formulaire de connexion</a>
     {{ form_end(registrationForm) }}
             </div>
