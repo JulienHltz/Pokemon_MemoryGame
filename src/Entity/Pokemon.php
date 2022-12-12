@@ -142,4 +142,5 @@ class Pokemon
 
         return $this;
     }
+
 }

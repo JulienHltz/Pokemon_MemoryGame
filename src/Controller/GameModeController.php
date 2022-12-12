@@ -15,4 +15,6 @@ class GameModeController extends AbstractController
             'controller_name' => 'GameModeController',
         ]);
     }
+
+    
 }
