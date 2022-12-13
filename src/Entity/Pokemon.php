@@ -125,6 +125,7 @@ class Pokemon
     public function getTypes(): Collection
     {
         return $this->types;
+        
     }
 
     public function addType(Type $type): self

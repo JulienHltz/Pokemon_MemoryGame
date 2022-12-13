@@ -98,3 +98,9 @@ window.addEventListener("keydown", (event) => {
     }, 3100);
   }
 });
+
+// No NavBar for HomePage
+// let navBar = document.getElementById('nav')
+// if(window.location.href = "/"){
+// navBar.style.display = "none"
+// }

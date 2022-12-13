@@ -133,3 +133,20 @@ body {
       }
     }
   }
+
+  #gameContainer{
+    display: flex;
+    flex-direction: column;
+
+    #countdownBlock{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      p{
+        color: rgb(13, 0, 255);
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
