@@ -81,6 +81,7 @@ startBtn.addEventListener("click", () => {
   pikaLoader.style.display = "block";
   console.log(startBackground.classList);
   startBackground.classList.replace("kenburns", "kenburns2");
+  /* Redirecting the user to the sign-in page after 3100 milliseconds. */
   setTimeout(() => {
     window.location.href = "sign-in";
   }, 3100);

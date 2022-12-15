@@ -10,7 +10,7 @@
     position: fixed;
     top: 15%;
     right: 10%;
-    background-color: #b92b2b;
+    background-color: $pokemonRed;
     border-radius: 100%;
     border: solid 2px white;
     padding: 2.6rem;
@@ -32,7 +32,7 @@
       }
 
   #mute:hover {
-    background-color: #ffffff;
+    // background-color: #ffffff;
     transition: 2s;
     cursor: url("../cursor/cursor_hover.cur"), auto;
   }
@@ -46,7 +46,7 @@
     color: #ffffff;
     text-shadow: 2px 4px 2px #3c5aa6;
     border: solid 2px rgb(56, 11, 11);
-    background-color: #800000c3;
+    background-color: $pokemonRed;
     border-radius: 0.5rem;
     padding: 1.2rem;
     margin-top: 7rem;

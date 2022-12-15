@@ -1,9 +1,12 @@
+// Bootstrap Surcharge
 $primary:#800000c3;
-;
+
+// APP Imports
 @import "~bootstrap/scss/bootstrap";
 @import
  "reset",
  "mixins",
+ "variables",
  "global",
  "titles",
  "buttons",

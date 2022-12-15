@@ -68,9 +68,9 @@ class UserProfileController extends AbstractController
                 $query2 = "INSERT INTO pokemon_type (pokemon_id, type) VALUES ('$pokedexid','$types')";
 
 
-                // echo '<pre>';
-                // var_dump($query2);
-                // echo '</pre>';
+                echo '<pre>';
+                var_dump($query);
+                echo '</pre>';
                 // die();
 
 
@@ -92,9 +92,9 @@ class UserProfileController extends AbstractController
                 // Insert all types of pokemon into table type
                 $query3 = "INSERT INTO type (type) VALUES ('$typeName')";
                 
-                echo '<pre>';
-                var_dump($query3);
-                echo '</pre>';
+                // echo '<pre>';
+                // var_dump($query3);
+                // echo '</pre>';
             }
         }
     }
