@@ -30,9 +30,13 @@
         text-align: center;
         border-radius: 1rem;
         padding: 0.6rem;
-        // border: solid;
-        background-color: #3c5aa6;
-        color: white;
+        border: solid 0.5px;
+        // background-color: #3c5aa6;
+        background-color: goldenrod;
+        // color: white;
+        color: black;
+        font-weight: bold;
+        
       }
 
       #btnContainer {
@@ -55,14 +59,14 @@
         }
 
         #ouiBtn {
-          background-color: green;
+          background-color: $pokemonBlue;
         }
         #ouiBtn:hover {
           background-color: black;
         }
 
         #nonBtn {
-          background-color: #b92b2b;
+          background-color: $pokemonRed;
         }
         #nonBtn:hover {
           background-color: black;

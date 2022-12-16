@@ -23,7 +23,8 @@ nav {
     }
 
     a:hover {
-        color: wheat;
+        // color: wheat;
+        color: $pokemonGold;
     }
     ul {
         display: flex;

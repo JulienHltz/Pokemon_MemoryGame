@@ -2,7 +2,7 @@
 var gridItem = document.querySelectorAll(".grid-item");
 	
 // Define a variable to store the remaining time (in seconds)
-var secondsLeft = 3;
+var secondsLeft = 25;
 
 // function to update the countdown + effects
 function updateCountdown() {
@@ -21,7 +21,6 @@ fliCards()
 }
 
 // Run the updateCountdown function every second (1000 milliseconds)
-alert("Observez bien où sont placés les pokémons, vous devrez ensuite retrouver les paires face cachée !");
 setInterval(updateCountdown, 1000);
 
 // Adding animation effects
@@ -50,6 +49,8 @@ setTimeout(() => {
   	}, 500);	
 }
 
+// ***********************UnFLip function for later*********************
+
 // function toogleUnFlipCard(card, pokeball) {
 // pokeball.style.opacity = "1";
 //   card.classList.add('gridAnimation')
@@ -57,3 +58,19 @@ setTimeout(() => {
 // 		card.classList.remove('gridAnimation')
 //   	}, 500);	
 // }
+
+
+// Sound on hover
+const cardClickSound = document.getElementById('cardClickSound')
+
+gridItem.addEventListener('click', () =>{
+  cardHoverSound.onplay()
+})
+
+
+
+
+
+
+
+

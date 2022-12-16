@@ -1,5 +1,9 @@
 const Encore = require('@symfony/webpack-encore');
 
+// HOT RELOAD LINES
+require("dotenv").config(); // line to add
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin"); // line to add
+
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
@@ -58,6 +62,40 @@ Encore
         config.corejs = '3.23';
     })
 
+
+    // HOT RELOAD LINES
+    .addPlugin(new BrowserSyncPlugin(
+        {
+            host: "localhost",
+            port: 3000,
+            proxy: process.env.PROXY,
+            files: [
+                {
+                    match: ["src/*.php"],
+                },
+                {
+                    match: ["templates/*.twig"],
+                },
+                {
+                    match: ["assets/*.js"],
+                },
+                {
+                    match: ["assets/*.css"],
+                },
+            ],
+            notify: false,
+        },
+
+        {
+
+            reload: true,
+        }
+    ))
+
+    // END HOT RELOAD LINES
+
+
+
     // enables Sass/SCSS support
     .enableSassLoader()
 
@@ -75,4 +113,14 @@ Encore
     //.autoProvidejQuery()
 ;
 
+// HOT RELOAD LINES
+
+
+
+
+
 module.exports = Encore.getWebpackConfig();
+
+
+
+

@@ -12,12 +12,12 @@ class GameMemoryController extends AbstractController
     public function index(): Response
     {
 
-        $pokeImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png';
+        // $pokeImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png';
 
 
         return $this->render('game_memory/index.html.twig', [
             'controller_name' => 'GameMemoryController',
-            'poke_img' => $pokeImage,
+            // 'poke_img' => $pokeImage,
         ]);
     }
     

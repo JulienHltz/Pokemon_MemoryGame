@@ -4,7 +4,8 @@
 
 {% block body %}
 <!-- Sound -->
-    <audio src="{{asset('music/menu.mp3')}}" id="gamemusic" ></audio>
+    {# <audio src="{{asset('music/menu.mp3')}}" id="gamemusic" ></audio> #}
+	
 <!-- Img -->
 <img id="background" src="{{asset('img/background2.jpg')}}" alt="">
 <!-- Sound Btn ON/OFF -->
@@ -16,7 +17,7 @@
 	<div id="countdownBlock"><i class="fa-regular fa-hourglass-half"></i> Temps restant : <span id="countdown">25</span></div>
 
 <div id="gameContainer">
-	<p><img class="pokeball" src="{{poke_img}}" alt=""></p>
+	{# <p><img class="pokeball" src="{{poke_img}}" alt=""></p> #}
 	<div class="grid">
 		{% for i in 1..24 %}
 			<div class="grid-item" data-y="{{ i }}" data-x="{{ i }}">
@@ -27,7 +28,7 @@
 
 	<div id="gameStatsBlock">
 	<div id="pairs"><i class="fa-solid fa-circle-check"></i> Nombre de paires trouvées : <span id="pairsFound">0</span>/12</div>
-	<div id="life"><i class="fa-solid fa-heart"></i> Nombre de vies restantes : <span id="lifeLeft">5</span>/5</div>
+	<div id="life"><i class="fa-solid fa-heart"></i> Nombre de vies restantes : <span id="lifeLeft"><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></div>
 	</div>
 
 </div>
@@ -40,5 +41,5 @@
 {% endblock %}
 {% block javascripts %}
 			{{ encore_entry_script_tags('gs') }}
-		{% endblock %}
+{% endblock %}
 
