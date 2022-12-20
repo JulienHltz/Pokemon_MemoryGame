@@ -18,17 +18,34 @@
 
 <div id="gameContainer">
 	{# <p><img class="pokeball" src="{{poke_img}}" alt=""></p> #}
-	<div class="grid">
+	{# {% for pokemon in pokemons%}
+	<img src="{{pokemon.image}}">
+	{% endfor %} #}
+
+	{# <div class="grid">
 		{% for i in 1..24 %}
 			<div class="grid-item" data-y="{{ i }}" data-x="{{ i }}">
 				<img class="pokeball" src="{{asset('img/pokeball.svg')}}" alt=""></div>
 		{% endfor %}
 
-	</div>
+	</div> #}
+
+	<div class="grid">
+    {% for pokemon in pokemons %}
+        {% for i in 1..2 %}
+            <div class="grid-item" data-y="{{ loop.parent.loop.index }}" data-x="{{ loop.index }}">
+				<img class="pokeball" src="{{asset('img/pokeball.svg')}}" alt="">
+                <img class="pokemonImage" src="{{ pokemon.image }}" alt="">	
+			</div>
+
+        {% endfor %}
+    {% endfor %}
+</div>
+
 
 	<div id="gameStatsBlock">
-	<div id="pairs"><i class="fa-solid fa-circle-check"></i> Nombre de paires trouvées : <span id="pairsFound">0</span>/12</div>
-	<div id="life"><i class="fa-solid fa-heart"></i> Nombre de vies restantes : <span id="lifeLeft"><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></div>
+	<div id="pairs"><i class="fa-solid fa-circle-check"></i> Paires trouvées : <span id="pairsFound">0</span>/12</div>
+	<div id="life"><i class="fa-solid fa-heart"></i> Vies restantes : <span id="lifeLeft"><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></div>
 	</div>
 
 </div>
