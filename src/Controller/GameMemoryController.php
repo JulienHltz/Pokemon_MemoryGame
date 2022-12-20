@@ -37,8 +37,11 @@ class GameMemoryController extends AbstractController
             $pokemon = $pokemonRepository->findOneById($id);
             // $pokemon = $pokemonRepository->findOneByImage($id);
             $pokemons[] = $pokemon;
+            $pokemons[] = $pokemon;
         }
-    
+
+        shuffle($pokemons);
+        // var_dump($pokemons);
         return $pokemons;
 
         
