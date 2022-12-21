@@ -3,8 +3,13 @@
 {% block title %}Memory Game{% endblock %}
 
 {% block body %}
+<!-- Music -->
+    <audio src="{{asset('music/city-life.mp3')}}" id="gameMusic" ></audio>
 <!-- Sound -->
-    {# <audio src="{{asset('music/menu.mp3')}}" id="gamemusic" ></audio> #}
+    <audio src="{{asset('music/clic-card.wav')}}" id="clickCard" ></audio>
+    <audio src="{{asset('music/lose-life.wav')}}" id="loseLife" ></audio>
+    <audio src="{{asset('music/valid-pair.wav')}}" id="validPair" ></audio>
+
 	
 <!-- Img -->
 <img id="background" src="{{asset('img/background2.jpg')}}" alt="">
@@ -17,34 +22,16 @@
 	<div id="countdownBlock"><i class="fa-regular fa-hourglass-half"></i> Temps restant : <span id="countdown">25</span></div>
 
 <div id="gameContainer">
-	{# <p><img class="pokeball" src="{{poke_img}}" alt=""></p> #}
-	{# {% for pokemon in pokemons%}
-	<img src="{{pokemon.image}}">
-	{% endfor %} #}
-
-	{# <div class="grid">
-		{% for i in 1..24 %}
-			<div class="grid-item" data-y="{{ i }}" data-x="{{ i }}">
-				<img class="pokeball" src="{{asset('img/pokeball.svg')}}" alt=""></div>
-		{% endfor %}
-
-	</div> #}
 
 	<div class="grid">
 	{% set i = 0 %}
     {% for pokemon in pokemons %}
 	{% set i = i + 1 %}
-
-        {# {% for i in 1..2 %} #}
-            {# <div class="grid-item" data-y="{{ pokemon.api_id }}" data-x="{{ pokemon.api_id }}"> #}
             <div class="grid-item">
 				<img class="pokeball" src="{{asset('img/pokeball.svg')}}" alt="">
                 <img class="pokemonImage" src="{{ pokemon.image }}" alt="">	
 				<div data-id="{{ pokemon.id }}" data-cardnumber="{{ i }}"></div>
 			</div>
-				{# {{dump(pokemon)}} #}
-
-        {# {% endfor %} #}
     {% endfor %}
 </div>
 

@@ -1,3 +1,22 @@
+// Music
+let gameMusic = document.getElementById('gameMusic')
+
+// Sound effects
+let clickSound = document.getElementById('clickCard')
+let loseLife = document.getElementById('loseLife')
+let validPair = document.getElementById('validPair')
+
+// Music Volume
+gameMusic.volume = 0.4
+clickSound.volume = 0.3
+
+// When the page load
+window.onload = function () {
+gameMusic.play()
+
+}
+
+
 // Variables
 var gridItem = document.querySelectorAll(".grid-item");
 
@@ -26,6 +45,7 @@ setInterval(updateCountdown, 1000);
 function fliCards() {
   gridItem.forEach(function (card) {
     card.classList.add("gridAnimation");
+
     let pokeball = card.querySelector(".pokeball");
     let pokemonImage = card.querySelector(".pokemonImage");
     let cardId = card.querySelector("div").getAttribute("data-id");
@@ -42,20 +62,27 @@ function fliCards() {
 }
 
 function toogleFlipCard(card, pokeball, pokemonImage) {
-  // If pokeball is visible
-  if (pokeball.style.opacity == "1") {
-    // Hide pokeball and display pokemonImage
-    pokeball.style.opacity = "0";
-    pokemonImage.style.opacity = "1";
-  } else {
-    // Display pokeball and hide pokemonImage
-    pokeball.style.opacity = "1";
-    pokemonImage.style.opacity = "0";
+  console.log(card.querySelector("div").dataset.cardnumber);
+  /* It's checking if the `validPairs` array doesn't include the `dataCardId` and if the `pokeball`
+  opacity is equal to `1`. If it is, it's hiding the `pokeball` and displaying the `pokemonImage`.
+  If it's not, it's displaying the `pokeball` and hiding the `pokemonImage`. */
+  if (!validPairs.includes(card.querySelector("div").dataset.cardnumber)) {
+    if (pokeball.style.opacity == "1") {
+      // Hide pokeball and display pokemonImage
+      pokeball.style.opacity = "0";
+      pokemonImage.style.opacity = "1";
+    } else {
+      // Display pokeball and hide pokemonImage
+      pokeball.style.opacity = "1";
+      pokemonImage.style.opacity = "0";
+    }
+    clickSound.currentTime = 0
+    clickSound.play()
+    card.classList.add("gridAnimation");
+    setTimeout(() => {
+      card.classList.remove("gridAnimation");
+    }, 500);
   }
-  card.classList.add("gridAnimation");
-  setTimeout(() => {
-    card.classList.remove("gridAnimation");
-  }, 500);
 }
 
 // Function to flip when the combinaison of id was wrong
@@ -67,21 +94,20 @@ function FlipWhenWrong(pokemonClicked, card) {
       `dataCardId`. If it is, it's displaying the pokeball and hiding the pokemonImage. */
       gridItem.forEach((e) => {
         let cardNumber = e.querySelector("div").getAttribute("data-cardnumber");
-        let pokeball = e.querySelector(".pokeball")
-        let pokemonImage = e.querySelector(".pokemonImage")
+        let pokeball = e.querySelector(".pokeball");
+        let pokemonImage = e.querySelector(".pokemonImage");
         if (cardNumber === dataCardId) {
-
-            // Display pokeball and hide pokemonImage
-            pokeball.style.opacity = "1";
-            pokemonImage.style.opacity = "0";
-          
-          e.classList.add("gridAnimation");
-          setTimeout(() => {
-            e.classList.remove("gridAnimation");
-          }, 500);
+          // Display pokeball and hide pokemonImage
+          pokeball.style.opacity = "1";
+          pokemonImage.style.opacity = "0";
+          if (!validPairs.includes(e.querySelector("div").dataset.cardnumber)) {
+            e.classList.add("gridAnimation");
+            setTimeout(() => {
+              e.classList.remove("gridAnimation");
+            }, 500);
+          }
         }
       });
-
     });
   }
 }
@@ -89,30 +115,48 @@ function FlipWhenWrong(pokemonClicked, card) {
 // Compare click 1 & click 2
 let clickNumber = 0;
 let pokemonClicked = [];
+let validPairs = [];
 
 function clickVerif(id, card, pokeball, pokemonImage) {
   let dataCardId = card.querySelector("div").getAttribute("data-cardnumber");
+  console.log("dataCardId = " + dataCardId);
+  console.log("validpairs : " + validPairs);
+  console.log(
+    "validPairs.includes(dataCardId) =>" + validPairs.includes(dataCardId)
+  );
+  if (!validPairs.includes(card.querySelector("div").dataset.cardnumber)) {
+    if (clickNumber < 2) {
+      /* It's pushing a new array to the array `pokemonClicked`. */
+      pokemonClicked.push({ id, dataCardId });
+    } else {
+      clickNumber = 0;
+      pokemonClicked = [];
+      pokemonClicked.push({ id, dataCardId });
+    }
 
-  if (clickNumber < 2) {
-    /* It's pushing a new array to the array `pokemonClicked`. */
-    pokemonClicked.push({ id, dataCardId });
-  } else {
-    clickNumber = 0;
-    pokemonClicked = [];
-    pokemonClicked.push({ id, dataCardId });
+    if (clickNumber === 1 && pokemonClicked[0].id === pokemonClicked[1].id) {
+      console.log("ok");
+      setTimeout(() => {
+        validPair.play()
+      }, 500);
+      pokemonClicked.forEach((element) => {
+        validPairs.push(element.dataCardId);
+      });
+      clickNumber++;
+      return true;
+    } else if (
+      pokemonClicked.length === 2 &&
+      pokemonClicked[0].id !== pokemonClicked[1].id
+    ) {
+      console.log("pas bon");
+      setTimeout(() => {
+        loseLife.play()
+        setTimeout(() => {
+          FlipWhenWrong(pokemonClicked, card)
+        }, 1000);
+        }, 600);
+      
+    }
+    clickNumber++;
   }
-
-  if (clickNumber === 1 && pokemonClicked[0].id === pokemonClicked[1].id) {
-    console.log("ok");
-  } else if (
-    pokemonClicked.length === 2 &&
-    pokemonClicked[0].id !== pokemonClicked[1].id
-  ) {
-    console.log("pas bon");
-
-    FlipWhenWrong(pokemonClicked, card);
-  }
-
-
-  clickNumber++;
 }
