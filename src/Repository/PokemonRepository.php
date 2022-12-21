@@ -73,13 +73,5 @@ class PokemonRepository extends ServiceEntityRepository
            ->getOneOrNullResult()
        ;
    }
-   public function findOneByImage($value): ?Pokemon
-   {
-       return $this->createQueryBuilder('pokemon')
-           ->andWhere('pokemon.image = :val')
-           ->setParameter('val', $value)
-           ->getQuery()
-           ->getOneOrNullResult()
-       ;
-   }
+   
 }

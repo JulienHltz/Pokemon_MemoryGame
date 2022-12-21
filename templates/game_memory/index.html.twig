@@ -31,13 +31,18 @@
 	</div> #}
 
 	<div class="grid">
+	{% set i = 0 %}
     {% for pokemon in pokemons %}
+	{% set i = i + 1 %}
+
         {# {% for i in 1..2 %} #}
             {# <div class="grid-item" data-y="{{ pokemon.api_id }}" data-x="{{ pokemon.api_id }}"> #}
             <div class="grid-item">
 				<img class="pokeball" src="{{asset('img/pokeball.svg')}}" alt="">
                 <img class="pokemonImage" src="{{ pokemon.image }}" alt="">	
+				<div data-id="{{ pokemon.id }}" data-cardnumber="{{ i }}"></div>
 			</div>
+				{# {{dump(pokemon)}} #}
 
         {# {% endfor %} #}
     {% endfor %}

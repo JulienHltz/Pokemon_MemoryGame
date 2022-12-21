@@ -35,6 +35,7 @@ class GameMemoryController extends AbstractController
         // Catch the corresponding pokemons to these numbers
         foreach ($ids as $id) {
             $pokemon = $pokemonRepository->findOneById($id);
+            // dd($pokemon);
             // $pokemon = $pokemonRepository->findOneByImage($id);
             $pokemons[] = $pokemon;
             $pokemons[] = $pokemon;
