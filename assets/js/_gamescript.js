@@ -1,3 +1,4 @@
+const cards = document.querySelectorAll('.memory-card');
 // Music
 let gameMusic = document.getElementById('gameMusic')
 
@@ -5,7 +6,7 @@ let gameMusic = document.getElementById('gameMusic')
 let clickSound = document.getElementById('clickCard')
 let loseLife = document.getElementById('loseLife')
 let validPair = document.getElementById('validPair')
-
+let lockBoard = false;
 // Music Volume
 gameMusic.volume = 0.4
 clickSound.volume = 0.3
@@ -18,10 +19,14 @@ gameMusic.play()
 
 
 // Variables
-var gridItem = document.querySelectorAll(".grid-item");
+let gridItem = document.querySelectorAll(".grid-item");
+let playerScore = 100;
+let lifeLeft = 5
+console.log(playerScore)
+
 
 // Define a variable to store the remaining time (in seconds)
-var secondsLeft = 1;
+let secondsLeft = 5;
 
 // function to update the countdown + effects
 function updateCountdown() {
@@ -33,130 +38,103 @@ function updateCountdown() {
   // Then, hide the countdown
   if (secondsLeft === 0) {
     document.getElementById("countdownBlock").style.display = "none";
-    fliCards();
+    cards.forEach( card => {
+      card.classList.remove('flip')
+      lockBoard = false
+    })
   }
 }
 
 // Run the updateCountdown function every second (1000 milliseconds)
 setInterval(updateCountdown, 1000);
+let hasFlippedCard = false;
 
-// Adding animation effects
+let firstCard, secondCard;
 
-function fliCards() {
-  gridItem.forEach(function (card) {
-    card.classList.add("gridAnimation");
+function flipCard() {
+  let compteur = document.getElementById("countdownBlock").style.display
+  if (compteur  == "none" ) {
+      if (lockBoard) return;
+  if (this === firstCard) return;
+  clickSound.currentTime = 0
+  
 
-    let pokeball = card.querySelector(".pokeball");
-    let pokemonImage = card.querySelector(".pokemonImage");
-    let cardId = card.querySelector("div").getAttribute("data-id");
-    pokemonImage.style.opacity = "0";
-    pokeball.style.opacity = "1";
-    setTimeout(() => {
-      card.classList.remove("gridAnimation");
-    }, 500);
-    card.addEventListener("click", () => {
-      toogleFlipCard(card, pokeball, pokemonImage);
-      clickVerif(cardId, card, pokeball, pokemonImage);
-    });
-  });
-}
+  clickSound.play()
+  this.classList.add('flip');
 
-function toogleFlipCard(card, pokeball, pokemonImage) {
-  console.log(card.querySelector("div").dataset.cardnumber);
-  /* It's checking if the `validPairs` array doesn't include the `dataCardId` and if the `pokeball`
-  opacity is equal to `1`. If it is, it's hiding the `pokeball` and displaying the `pokemonImage`.
-  If it's not, it's displaying the `pokeball` and hiding the `pokemonImage`. */
-  if (!validPairs.includes(card.querySelector("div").dataset.cardnumber)) {
-    if (pokeball.style.opacity == "1") {
-      // Hide pokeball and display pokemonImage
-      pokeball.style.opacity = "0";
-      pokemonImage.style.opacity = "1";
-    } else {
-      // Display pokeball and hide pokemonImage
-      pokeball.style.opacity = "1";
-      pokemonImage.style.opacity = "0";
-    }
-    clickSound.currentTime = 0
-    clickSound.play()
-    card.classList.add("gridAnimation");
-    setTimeout(() => {
-      card.classList.remove("gridAnimation");
-    }, 500);
+  if (!hasFlippedCard) {
+    hasFlippedCard = true;
+    firstCard = this;
+
+    return;
   }
-}
 
-// Function to flip when the combinaison of id was wrong
-function FlipWhenWrong(pokemonClicked, card) {
-  if (pokemonClicked[0].id !== pokemonClicked[1].id) {
-    pokemonClicked.forEach((element) => {
-      const { id, dataCardId } = element;
-      /* It's looping through the `gridItem` array and checking if the `cardNumber` is equal to the
-      `dataCardId`. If it is, it's displaying the pokeball and hiding the pokemonImage. */
-      gridItem.forEach((e) => {
-        let cardNumber = e.querySelector("div").getAttribute("data-cardnumber");
-        let pokeball = e.querySelector(".pokeball");
-        let pokemonImage = e.querySelector(".pokemonImage");
-        if (cardNumber === dataCardId) {
-          // Display pokeball and hide pokemonImage
-          pokeball.style.opacity = "1";
-          pokemonImage.style.opacity = "0";
-          if (!validPairs.includes(e.querySelector("div").dataset.cardnumber)) {
-            e.classList.add("gridAnimation");
-            setTimeout(() => {
-              e.classList.remove("gridAnimation");
-            }, 500);
-          }
-        }
-      });
-    });
   }
+
+  secondCard = this;
+  checkForMatch();
 }
 
-// Compare click 1 & click 2
-let clickNumber = 0;
-let pokemonClicked = [];
-let validPairs = [];
+function checkForMatch() {
+  let isMatch = firstCard.dataset.id === secondCard.dataset.id;
+  
 
-function clickVerif(id, card, pokeball, pokemonImage) {
-  let dataCardId = card.querySelector("div").getAttribute("data-cardnumber");
-  console.log("dataCardId = " + dataCardId);
-  console.log("validpairs : " + validPairs);
-  console.log(
-    "validPairs.includes(dataCardId) =>" + validPairs.includes(dataCardId)
-  );
-  if (!validPairs.includes(card.querySelector("div").dataset.cardnumber)) {
-    if (clickNumber < 2) {
-      /* It's pushing a new array to the array `pokemonClicked`. */
-      pokemonClicked.push({ id, dataCardId });
-    } else {
-      clickNumber = 0;
-      pokemonClicked = [];
-      pokemonClicked.push({ id, dataCardId });
-    }
+  isMatch ? disableCards() : unflipCards();
+}
 
-    if (clickNumber === 1 && pokemonClicked[0].id === pokemonClicked[1].id) {
-      console.log("ok");
-      setTimeout(() => {
-        validPair.play()
-      }, 500);
-      pokemonClicked.forEach((element) => {
-        validPairs.push(element.dataCardId);
-      });
-      clickNumber++;
-      return true;
-    } else if (
-      pokemonClicked.length === 2 &&
-      pokemonClicked[0].id !== pokemonClicked[1].id
-    ) {
-      console.log("pas bon");
-      setTimeout(() => {
-        loseLife.play()
-        setTimeout(() => {
-          FlipWhenWrong(pokemonClicked, card)
-        }, 1000);
-        }, 600);
-      
+function disableCards() {
+  playerScore += 50
+  console.log(playerScore)
+  setTimeout(() => {
+    validPair.play()
+  }, 500);
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+
+  resetBoard();
+}
+
+function unflipCards() {
+  
+  lockBoard = true;
+  playerScore -= 20
+  lifeLeft--
+  let lifeBar = document.getElementById('lifeLeft')
+  let hearts = lifeBar.querySelectorAll('i')
+  let currentLife = 0
+  hearts.forEach(e => {
+    if(e.style.display != "none") {
+      currentLife++
     }
-    clickNumber++;
+  }) 
+  if(currentLife > 0 ){
+    hearts[currentLife -1 ].style.display = "none"
+  } else if (currentLife <= 0 ) {
+    console.log('LOSER !!! ')
+    console.log(playerScore)
   }
+  currentLife =0
+  
+
+
+
+
+  
+  console.log(playerScore)
+  setTimeout(() => {
+  loseLife.play()
+  }, 600);
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+
+    resetBoard();
+  }, 1200);
 }
+
+function resetBoard() {
+  [hasFlippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
