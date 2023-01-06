@@ -9,6 +9,9 @@
     <audio src="{{asset('music/clic-card.wav')}}" id="clickCard" ></audio>
     <audio src="{{asset('music/lose-life.wav')}}" id="loseLife" ></audio>
     <audio src="{{asset('music/valid-pair.wav')}}" id="validPair" ></audio>
+    <audio src="{{asset('music/gameover.wav')}}" id="gameOver" ></audio>
+    <audio src="{{asset('music/levelcomplete.mp3')}}" id="win" ></audio>
+
 
 	
 <!-- Img -->
@@ -37,12 +40,45 @@
 
 
 	<div id="gameStatsBlock">
-	<div id="pairs"><i class="fa-solid fa-circle-check"></i> Paires trouvées : <span id="pairsFound">0</span>/12</div>
-	<div id="life"><i class="fa-solid fa-heart"></i> Vies restantes : <span id="lifeLeft"><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></div>
+	<div id="pairs"><i class="fa-solid fa-circle-check"></i> Score : <span id="playerScore"></span></div>
+	<div id="life">Barre de vie : 
+	<span id="lifeLeft">
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	</span>
+	</div>
 	</div>
 
 </div>
 
+{# GameOver #}
+<div id="gameOverModal" class="winOrLose">
+	<div id="gameOverDiv" class="winOrLoseDiv">
+	<h4 class="modalText">GAME OVER</h4>
+	<p class="modalText">Oh non, vous avez perdu !</p>
+
+	<div class="btnDivGame">
+	<a href="{{ path('app_game_memory') }}"><button class="modalBtnGame" id="rejouer">Rejouer</button></a>
+	<a href="{{ path('app_user_profile') }}"><button class="modalBtnGame" id="menu">Retour au menu</button></a>
+	</div>
+	</div>
+</div>
+
+{# Win #}
+<div id="winModal" class="winOrLose">
+	<div id="winDiv" class="winOrLoseDiv">
+	<h4 class="modalText">Bravo !</h4>
+	<div><p class="modalText">Voici votre score final: </p><span id="scoreResult"></span></div>
+
+	<div class="btnDivGame">
+	<a href="{{ path('app_game_memory') }}"><button class="modalBtnGame" id="rejouer">Rejouer</button></a>
+	<a href="{{ path('app_user_profile') }}"><button class="modalBtnGame" id="menu">Retour au menu</button></a>
+	</div>
+	</div>
+</div>
 
 
 </div>

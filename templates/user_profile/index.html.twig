@@ -10,9 +10,22 @@
 <div class="miniContainerProfile">
     <h4>Bonjour {{ app.user.pseudo }} !</h4>
     <h5><i class="fa-solid fa-medal"></i> Meilleurs scores par modes :</h5>
-    <h6><i class="fa-solid fa-star"></i></i> Memory : 895 pts</h6>
+    {% for score in scoreTable%}
+        {% if score.game.id == 1 %}
+        <h6><i class="fa-solid fa-star"></i></i> Memory :{{ score.score }} points</h6>
+        {% endif %}
+        {% if score.game.id == 2 %}
+        <h6><i class="fa-solid fa-star"></i></i> Type :{{ score.score }} points</h6>
+        {% endif %}
+         {% if score.game.id == 3 %}
+        <h6><i class="fa-solid fa-star"></i></i> Generation :{{ score.score }} points</h6>
+        {% endif %}
+        
+
+        {% endfor %}
+    {# <h6><i class="fa-solid fa-star"></i></i> Memory :  pts</h6>
     <h6><i class="fa-solid fa-star"></i></i> Type : 450 pts</h6>
-    <h6><i class="fa-solid fa-star"></i></i> Generation : 200 pts</h6>
+    <h6><i class="fa-solid fa-star"></i></i> Generation : 200 pts</h6> #}
 </div>
 <div class="miniContainerProfile">
     {% if is_granted('ROLE_ADMIN') %}

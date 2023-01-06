@@ -184,9 +184,16 @@ body {
       
       #life{
 
-        i{
-          color: #800000c3;
-          margin: 0 2px;
+        #lifeLeft{
+
+          background-color: rgba(255, 255, 255, 0.612);
+          border-radius: 0.5rem;
+          padding: 0.2rem 0.3rem;
+
+          i{
+            color: #800000c3;
+            margin: 0 2px;
+          }
         }
       }
       

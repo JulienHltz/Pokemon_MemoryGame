@@ -39,7 +39,7 @@
         
       }
 
-      #btnContainer {
+      .btnContainer {
         display: flex;
         justify-content: space-around;
         margin-top: 4.2rem;
@@ -71,6 +71,94 @@
         #nonBtn:hover {
           background-color: black;
         }
+      }
+    }
+  }
+
+
+
+    #gameOverDiv{
+      background-color: rgba(77, 30, 33, 0.874);
+      
+      h4{
+        color: rgb(206, 21, 21);
+      }
+    }
+
+    #winDiv{
+      background-color: rgba(65, 109, 72, 0.874);
+      
+      h4{
+        color: rgb(8 39 9);
+      }
+
+      span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        color: $pokemonGold;
+      }
+    }
+
+  .winOrLose{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    border: solid;;
+    background-color: rgba(27, 30, 30, 0.886);
+
+
+    .winOrLoseDiv{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 5rem;
+      width: 35%;
+      height: 50%;
+      border-radius: 1rem;
+
+      .btnDivGame{
+        display: flex;
+        justify-content: space-around;
+        gap: 3.5rem;
+
+        .modalBtnGame{
+          font-size: 1rem;
+          border-radius: 1rem;
+          padding: 0.4rem 0 0.4rem 0;
+          width: 8rem;
+          height: 3.3rem;
+          // cursor: pointer;
+          border: none;
+        }
+
+        #rejouer{
+          background-color: $pokemonBlue;
+          color: wheat;
+        }
+
+        #menu{
+          background-color: $pokemonGold;
+        }
+      }
+
+      p{
+        font-size: larger;
+        color: white;
+
+      }
+      
+
+      h4{
+        font-size: xx-large;
+        font-weight: bold;
+        filter: drop-shadow(4px 4px 4px);
       }
     }
   }
