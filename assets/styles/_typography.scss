@@ -1,0 +1,21 @@
+/* Font variables */
+
+@font-face {
+    font-family: 'Hollow';
+    src: url('../fonts/Pokemon_Hollow.ttf');
+}
+
+@font-face {
+    font-family: 'Solid';
+    src: url('../fonts/Pokemon_Solid.ttf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'),
+        url('https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700');
+
+
+
+$font-size-default: 16px;
+$font-family-default: 'Orbitron';
+$font-pokemon: 'Pokémon Fancy';
+

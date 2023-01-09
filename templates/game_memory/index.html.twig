@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Memory Game{% endblock %}
+
+{% block body %}
+<!-- Music -->
+    <audio src="{{asset('music/city-life.mp3')}}" id="gameMusic" ></audio>
+<!-- Sound -->
+    <audio src="{{asset('music/clic-card.wav')}}" id="clickCard" ></audio>
+    <audio src="{{asset('music/lose-life.wav')}}" id="loseLife" ></audio>
+    <audio src="{{asset('music/valid-pair.wav')}}" id="validPair" ></audio>
+    <audio src="{{asset('music/gameover.wav')}}" id="gameOver" ></audio>
+    <audio src="{{asset('music/levelcomplete.mp3')}}" id="win" ></audio>
+
+
+	
+<!-- Img -->
+<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
+<!-- Sound Btn ON/OFF -->
+<button id="mute">
+    <i class="fa-solid fa-volume-xmark" id="fa_sound"></i>
+</button>
+
+<div id="gamePageContainer">
+	<div id="countdownBlock"><i class="fa-regular fa-hourglass-half"></i> Temps restant : <span id="countdown">25</span></div>
+
+<div id="gameContainer">
+
+	<div class="grid">
+	{% set i = 0 %}
+    {% for pokemon in pokemons %}
+	{% set i = i + 1 %}
+            <div class="grid-item memory-card flip" data-id="{{pokemon.id}}">
+				<img class="pokeball back-face" src="{{asset('img/pokeball.svg')}}" alt="">
+                <img class="pokemonImage front-face active" src="{{ pokemon.image }}" alt="">	
+				<div data-id="{{ pokemon.id }}" data-cardnumber="{{ i }}"></div>
+			</div>
+    {% endfor %}
+</div>
+
+
+	<div id="gameStatsBlock">
+	<div id="score"><i class="fa-solid fa-star"></i> Score : <span id="playerScore"></span> points</div>
+	<div id="life"> 
+	<span id="lifeLeft">
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	<i class="fa-solid fa-heart"></i>
+	</span>
+	</div>
+	</div>
+
+</div>
+
+{# GameOver #}
+<div id="gameOverModal" class="winOrLose">
+	<div id="gameOverDiv" class="winOrLoseDiv">
+	<h4 class="modalText">GAME OVER</h4>
+	<p class="modalText">Oh non, vous avez perdu !</p>
+
+	<div class="btnDivGame">
+	<a href="{{ path('app_game_memory') }}"><button class="modalBtnGame" id="rejouer">Rejouer</button></a>
+	<a href="{{ path('app_user_profile') }}"><button class="modalBtnGame" id="menu">Retour au menu</button></a>
+	</div>
+	</div>
+</div>
+
+{# Win #}
+<div id="winModal" class="winOrLose">
+	<div id="winDiv" class="winOrLoseDiv">
+	<h4 class="modalText">Bravo !</h4>
+	<div><p class="modalText">Voici votre score final: </p><span id="scoreResult"></span></div>
+
+	<div class="btnDivGame">
+	<a href="{{ path('app_game_memory') }}"><button class="modalBtnGame" id="rejouer">Rejouer</button></a>
+	<a href="{{ path('app_user_profile') }}"><button class="modalBtnGame" id="menu">Retour au menu</button></a>
+	</div>
+	</div>
+</div>
+
+
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+			{{ encore_entry_script_tags('gs') }}
+{% endblock %}
+
