@@ -23,8 +23,8 @@
 	</head>
 	<body id="body">
 		<header>
-
-		{% if app.user %}
+		
+		{% if app.user and not ((app.request.attributes.get('_route') == "app_home")) %}
 
 			<nav id="nav">
 				<div>

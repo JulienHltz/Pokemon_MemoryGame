@@ -1,8 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Classement{% endblock %}
+{% block title %}Classement
+{% endblock %}
 
 {% block body %}
-<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
+	<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
+
+
+    {# Memory display #}
+	{% set i = 0 %}
+    <h1>Memory</h1>
+	{% for result in results %}
+		{% if (result.game.id) == 1  and i < 3 %}
+			{{ result.score }}
+			{{ result.user.pseudo }}
+			{% set i = i + 1 %}
+		
+		{% endif %}
+	{% endfor %}
+
+    {# Type display #}
+	{% set j = 0 %}
+    <h1>Type</h1>
+    {% for result in results %}
+		{% if (result.game.id) == 2  and i < 3 %}
+			{{ result.score }}
+			{{ result.user.pseudo }}
+			{% set i = i + 1 %}
+		
+		{% endif %}
+	{% endfor %}
+
+    {# Generation display #}
+	{% set k = 0 %}
+    <h1>Generation</h1>
+    {% for result in results %}
+		{% if (result.game.id) == 3  and i < 3 %}
+			{{ result.score }}
+			{{ result.user.pseudo }}
+			{% set i = i + 1 %}
+		
+		{% endif %}
+	{% endfor %}
+
+
+
+
+
+
 
 {% endblock %}

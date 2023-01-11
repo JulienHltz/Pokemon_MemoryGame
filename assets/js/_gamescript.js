@@ -1,3 +1,8 @@
+// Import sound file
+
+import { disableAllSounds, isActive, setSound} from './_soundenabled';
+
+
 const cards = document.querySelectorAll(".memory-card");
 // Music
 let gameMusic = document.getElementById("gameMusic");
@@ -13,9 +18,43 @@ clickSound.volume = 0.3;
 gameOver.volume = 0.5;
 win.volume = 0.5;
 
+// Mute Btn ON/OFF
+let soundBtn = document.getElementById("mute");
+let faSound = document.getElementById("fa_sound");
+let unMute = document.getElementById("unMute");
+let muteSound = document.getElementById("muteSound");
+
+soundBtn.addEventListener("click", () => {
+  if (!isActive()) {
+    unMute.play();
+    setSound(true)
+    setTimeout(() => {
+      gameMusic.play();
+    }, 800);
+
+    faSound.classList.replace("fa-volume-xmark", "fa-volume-high");
+    soundBtn.style.backgroundColor = "#132b7b";
+  } else {
+    setSound(false)
+    gameMusic.pause();
+    muteSound.play();
+    gameMusic.currentTime = 0;
+    faSound.classList.replace("fa-volume-high", "fa-volume-xmark");
+    soundBtn.style.backgroundColor = "#7c1a20";
+  }
+});
+
+
 // When the page load
 window.onload = function () {
-  gameMusic.play();
+  if(isActive()){
+    gameMusic.play();
+    faSound.classList.replace("fa-volume-xmark", "fa-volume-high");
+    soundBtn.style.backgroundColor = "#132b7b";
+  } else{
+    faSound.classList.replace("fa-volume-high", "fa-volume-xmark");
+    soundBtn.style.backgroundColor = "#7c1a20";
+  }
 };
 
 // Variables
@@ -25,7 +64,7 @@ let lifeLeft = 5;
 console.log(playerScore);
 
 // Display the user score
-const playerScoreElement = document.querySelector("#playerScore");
+const playerScoreElement = document.querySelector(".playerScore");
 playerScoreElement.innerText = playerScore;
 
 // Define a variable to store the remaining time (in seconds)
@@ -60,8 +99,9 @@ function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
     clickSound.currentTime = 0;
-
-    clickSound.play();
+    if(isActive()){
+      clickSound.play();
+    }
     this.classList.add("flip");
 
     if (!hasFlippedCard) {
@@ -90,7 +130,9 @@ function disableCards() {
 
   console.log(playerScore);
   setTimeout(() => {
-    validPair.play();
+    if(isActive()){
+      validPair.play();
+    }
   }, 500);
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
@@ -129,7 +171,9 @@ function disableCards() {
       winModal.style.display = "flex";
       scoreResult.innerText = playerScore + " points !";
 
-      win.play();
+      if(isActive()){
+        win.play();
+      }
     }, 500);
   }
 }
@@ -156,7 +200,9 @@ function unflipCards() {
     gameMusic.pause();
     setTimeout(() => {
       gameOverModal.style.display = "flex";
-      gameOver.play();
+      if(isActive()){
+        gameOver.play();
+      }
     }, 500);
     console.log("LOSER !!! ");
   }
@@ -164,7 +210,9 @@ function unflipCards() {
 
   console.log(playerScore);
   setTimeout(() => {
-    loseLife.play();
+    if(isActive()){
+      loseLife.play();
+    }
   }, 400);
   setTimeout(() => {
     firstCard.classList.remove("flip");

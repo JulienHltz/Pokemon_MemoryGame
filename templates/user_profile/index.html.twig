@@ -8,18 +8,23 @@
 <div id="profileContainer">
 
 <div class="miniContainerProfile">
-    <h4>Bonjour {{ app.user.pseudo }} !</h4>
+    <div id="bonjourUser"><h4>Bonjour </h4><span class="playerScore">{{ app.user.pseudo }} !</span></div>
     <h5><i class="fa-solid fa-medal"></i> Meilleurs scores par modes :</h5>
+    {% if not scoreTable %}
+    <h6>Aucune partie n'a encore été enregistrée</h6>
+    {% endif %}
+
     {% for score in scoreTable%}
         {% if score.game.id == 1 %}
-        <h6><i class="fa-solid fa-star"></i></i> Memory :{{ score.score }} points</h6>
+        <h6><i class="fa-solid fa-star"></i> Memory : <span class="playerScore">{{ score.score }}</span> points</h6>
         {% endif %}
         {% if score.game.id == 2 %}
-        <h6><i class="fa-solid fa-star"></i></i> Type :{{ score.score }} points</h6>
+        <h6><i class="fa-solid fa-star"></i> Type : <span class="playerScore">{{ score.score }}</span> points</h6>
         {% endif %}
          {% if score.game.id == 3 %}
-        <h6><i class="fa-solid fa-star"></i></i> Generation :{{ score.score }} points</h6>
+        <h6><i class="fa-solid fa-star"></i> Generation : <span class="playerScore">{{ score.score }}</span> points</h6>
         {% endif %}
+         
         
 
         {% endfor %}

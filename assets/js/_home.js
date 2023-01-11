@@ -1,3 +1,8 @@
+// Import sound file
+
+import { disableAllSounds, isActive, setSound} from './_soundenabled';
+
+
 let startBackground = document.getElementById("background");
 let soundBtn = document.getElementById("mute");
 let body = document.getElementById("body");
@@ -11,8 +16,12 @@ let startSound = document.getElementById("startSound");
 let unMute = document.getElementById("unMute");
 let muteSound = document.getElementById("muteSound");
 
+
 // Sound Volume
 backgroundSound.volume = 0.3;
+
+
+
 
 // After the page load
 window.onload = function () {
@@ -22,6 +31,7 @@ window.onload = function () {
 
   // Modal settings
   ouiBtn.addEventListener("click", () => {
+    setSound(true)
     unMute.play();
     setTimeout(() => {
       backgroundSound.play();
@@ -29,14 +39,16 @@ window.onload = function () {
     // alert("Activation du son en jeu");
     modal.style.display = "none";
     faSound.classList.replace("fa-volume-xmark", "fa-volume-high");
-    soundBtn.style.backgroundColor = "#3c5aa6";
+    soundBtn.style.backgroundColor = "#132b7b";
   });
 
   nonBtn.addEventListener("click", () => {
+    setSound(false)
+    disableAllSounds()
     alert("Le son en jeu est désormais désactivé");
     modal.style.display = "none";
     faSound.classList.replace("fa-volume-high", "fa-volume-xmark");
-    soundBtn.style.backgroundColor = "#3c5aa6";
+    soundBtn.style.backgroundColor = "#7c1a20";
   });
 
   if (ouiBtn || nonBtn) {
@@ -56,27 +68,31 @@ window.onload = function () {
 // Mute Btn ON/OFF
 
 soundBtn.addEventListener("click", () => {
-  if (backgroundSound.paused) {
+  if (!isActive()) {
     unMute.play();
+    setSound(true)
     setTimeout(() => {
       backgroundSound.play();
     }, 800);
 
     faSound.classList.replace("fa-volume-xmark", "fa-volume-high");
-    soundBtn.style.backgroundColor = "#3c5aa6";
+    soundBtn.style.backgroundColor = "#132b7b";
   } else {
+    setSound(false)
     backgroundSound.pause();
     muteSound.play();
     backgroundSound.currentTime = 0;
     faSound.classList.replace("fa-volume-high", "fa-volume-xmark");
-    soundBtn.style.backgroundColor = "#b92b2b";
+    soundBtn.style.backgroundColor = "#7c1a20";
   }
 });
 
 // Start Button settings
 
 startBtn.addEventListener("click", () => {
-  startSound.play();
+  if(isActive()){
+    startSound.play();
+  }
   backgroundSound.pause();
   pikaLoader.style.display = "block";
   console.log(startBackground.classList);

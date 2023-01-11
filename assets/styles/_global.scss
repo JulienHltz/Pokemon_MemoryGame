@@ -13,6 +13,14 @@ body {
   i {
     color: black;
   }
+  .playerScore{
+    color: #132b7b;
+    font-weight: bold;
+    font-family: 'Solid';
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+  }
+
 }
 
 #profileContainer {
@@ -24,26 +32,50 @@ body {
   height: 90%;
 
   .miniContainerProfile {
-    h4 {
-      // text-transform: uppercase;
-      font-weight: bold;
-      font-size: 2rem;
-      text-shadow: 0.5px 2.5px 0px $pokemonGold;
-    }
+    #bonjourUser{
+      h4 {
+        // text-transform: uppercase;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 2rem;
+        color: black;
+        text-shadow: 0.5px 3px 4px $pokemonGold;
+        margin-right: 0.7rem;
+      }
 
+      span{
+        font-size: 1.4rem;
+      }
+      
+    }
     h5 {
       font-family: "Crimson Text";
       text-decoration: underline;
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       // text-decoration: underline;
       text-transform: uppercase;
       margin: 4.5rem 0 2rem 0;
+
+
+      i{
+        color: $pokemonGold;
+        text-shadow: 0.7px 2.5px 0px $pokemonBlue;
+        border-radius: 100%;
+        padding: 0.5rem;
+
+      }
     }
 
     h6 {
       padding: 0.5rem;
       font-style: italic;
+
+      i{
+        color: #132b7b;
+        margin: 0 2px;
+
+      }
     }
 
     font-family: "Orbitron";
@@ -89,9 +121,11 @@ body {
   height: 100%;
 
   h2 {
-    font-family: "Orbitron";
-    font-size: 2rem;
+    font-family: "Crimson Text";
+    font-size: 1.6rem;
     text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 
   #childGameModContainer {
@@ -117,7 +151,28 @@ body {
       font-size: 1.7rem;
       transition: all 800ms;
       text-decoration: none;
+      border-radius: 40px 10px;
     }
+      
+      a:nth-child(2), a:nth-child(3){
+        background-color: grey;
+        
+        i{
+          font-size: 1.4rem;
+          z-index: 3;
+          position: absolute;
+          color: rgb(48, 45, 45);
+        }
+        
+        div{
+          display: flex;
+          justify-content: center;
+          opacity: 0.3;
+        }
+      }
+      
+
+    
     
     a:hover {
       transform: scale(1.18);
@@ -151,6 +206,7 @@ body {
   }
   
   
+  
   #gameContainer {
     position: relative;
     display: flex;
@@ -174,13 +230,15 @@ body {
 
 
 
-      #pairs{
+      #score{
         i{
           color: #132b7b;
           margin: 0 2px;
 
         }
+
       }
+      
       
       #life{
 
@@ -188,11 +246,12 @@ body {
 
           background-color: rgba(255, 255, 255, 0.612);
           border-radius: 0.5rem;
-          padding: 0.2rem 0.3rem;
+          padding: 0.4rem 0.3rem;
 
           i{
             color: #800000c3;
             margin: 0 2px;
+            font-size: 1.3rem;
           }
         }
       }

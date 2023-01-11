@@ -15,24 +15,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ScoreController extends AbstractController
 {
-    #[Route('/score/{mod}/{score}', name: 'app_score', methods: 'POST')] // ,role user à rajouter
-    public function index($mod, $playerId, $score, GameUserRepository $gameUserRepository, GameRepository $gameRepository, UserRepository $userRepository,UserInterface $user)
+    #[Route('/score/{mod}/{score}', name: 'app_score', methods: 'POST')]
+    public function index($mod, $score, GameUserRepository $gameUserRepository, GameRepository $gameRepository)
     {
-        $game = $gameRepository->findOneBy(["id" => $mod]);
-        $player = $userRepository->findOneBy(["email" => $user->getUserIdentifier()]);
+        $game = $gameRepository->findOneBy(["id" => $mod]); 
         $newScore = new GameUser();
-        $scoreTable = $gameUserRepository->findOneBy(['user' => $playerId, 'game' => $mod]);
+        $user = $this->getUser();
+        $scoreTable = $gameUserRepository->findOneBy(['user' => $user, 'game' => $mod]);
 
         if (!$scoreTable) {
             $newScore->setGame($game)
-                ->setUser($user)
+                ->setUser($this->getUser())
                 ->setScore($score);
             $gameUserRepository->save($newScore, true);
             return new Response(null, Response::HTTP_NO_CONTENT);
         } elseif ($score > $scoreTable->getScore()) {
             $gameUserRepository->remove($scoreTable, true);
             $newScore->setGame($game)
-                ->setUser($player)
+                ->setUser($user)
                 ->setScore($score);
             $gameUserRepository->save($newScore, true);
             return new Response(null, Response::HTTP_NO_CONTENT);
