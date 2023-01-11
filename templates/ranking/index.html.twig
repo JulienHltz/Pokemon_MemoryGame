@@ -6,46 +6,63 @@
 {% block body %}
 	<img id="background" src="{{asset('img/background2.jpg')}}" alt="">
 
+	<div id="container-ranking">
+	<h1>Classement des joueurs</h1>
+		{# Memory display #}
+		<div class="rankingDivs">
+			{% set i = 0 %}
+			<h4>Memory Game</h4>
+			<h6>Meilleurs Scores</h6>
+			<div class="dataRank">
+			<div class="dataRank_pseudo">Pseudo</div>
+			<div class="dataRank_score"><i class="fa-solid fa-star"></i>Score</div>
+			</div>
+			{% for result in results %}
+				{% if (result.game.id) == 1  and i < 3 %}
+					<div class="blocScorePseudo">
+					<div class="rankingScore">{{ result.score }}</div>
+					<div class="rankingPseudo">{{ result.user.pseudo }}</div>
+					</div>
+					{% set i = i + 1 %}
 
-    {# Memory display #}
-	{% set i = 0 %}
-    <h1>Memory</h1>
-	{% for result in results %}
-		{% if (result.game.id) == 1  and i < 3 %}
-			{{ result.score }}
-			{{ result.user.pseudo }}
-			{% set i = i + 1 %}
+				{% endif %}
+			{% endfor %}
+
+			{# Type display #}
+		{# <div class="rankingDivs"> #}
+			{% set j = 0 %}
+			{# <h1>Type</h1> #}
+			{% for result in results %}
+				{% if (result.game.id) == 2  and j < 3 %}
+					<div class="blocScorePseudo">
+					<div class="rankingScore">{{ result.score }}</div>
+					<div class="rankingPseudo">{{ result.user.pseudo }}</div>
+					</div>
+					{% set i = i + 1 %}
+
+				{% endif %}
+			{% endfor %}
+		{# </div> #}
+
+		{# Generation display #}
+		{# <div class="rankingDivs"> #}
+			{% set k = 0 %}
+			{# <h1>Generation</h1> #}
+			{% for result in results %}
+				{% if (result.game.id) == 3  and k < 3 %}
+					<div class="blocScorePseudo">
+					<div class="rankingScore">{{ result.score }}</div>
+					<div class="rankingPseudo">{{ result.user.pseudo }}</div>
+					</div>
+					{% set i = i + 1 %}
+
+				{% endif %}
+			{% endfor %}
+		{# </div> #}
+		</div>
+
 		
-		{% endif %}
-	{% endfor %}
-
-    {# Type display #}
-	{% set j = 0 %}
-    <h1>Type</h1>
-    {% for result in results %}
-		{% if (result.game.id) == 2  and i < 3 %}
-			{{ result.score }}
-			{{ result.user.pseudo }}
-			{% set i = i + 1 %}
-		
-		{% endif %}
-	{% endfor %}
-
-    {# Generation display #}
-	{% set k = 0 %}
-    <h1>Generation</h1>
-    {% for result in results %}
-		{% if (result.game.id) == 3  and i < 3 %}
-			{{ result.score }}
-			{{ result.user.pseudo }}
-			{% set i = i + 1 %}
-		
-		{% endif %}
-	{% endfor %}
-
-
-
-
+	</div>
 
 
 
