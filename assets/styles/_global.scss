@@ -230,11 +230,13 @@ body {
   
 
     i{
-      color: goldenrod;
+      color: $pokemonBlue;
     }
 
     #countdown{
-      color: #132b7b;
+      color: $pokemonRed;
+      font-weight: bold;
+
     }
   }
   
@@ -292,16 +294,17 @@ body {
         #lifeLeft{
           display: flex;
           align-items: center;
-          background-color: rgba(255, 255, 255, 0.612);
+          // background-color: rgba(255, 255, 255, 0.612);
           border-radius: 0.5rem;
           padding: 1rem;
           
           i{
             color: #800000c3;
             // margin: 1rem 1rem;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             animation: heartbeat 2s ease-in-out infinite both;
             padding: 0 0.2rem;
+
           }
         }
       }
@@ -325,7 +328,7 @@ body {
   width: 100%;
   height: 100%;
   border: solid;
-  gap: 5rem;
+  gap: 3rem;
 
   h1{
     font-family: "Crimson Text";

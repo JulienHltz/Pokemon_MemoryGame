@@ -6,6 +6,7 @@ let pikaLoader = document.getElementById("pikaLoader");
 let startSound = document.getElementById("startSound");
 let startBackground = document.getElementById("background");
 let lockedMod = document.getElementsByClassName("lockedMod");
+let lockedSound = document.getElementById('lockedSound');
 
 modMemory.addEventListener("click", () => {
 
@@ -27,9 +28,12 @@ modMemory.addEventListener("click", () => {
  for (let i = 0; i < lockedMod.length; i++) {
   lockedMod[i].addEventListener("click", () => {
       lockedMod[i].classList.add("wobble-hor-bottom");
+      if(isActive()){
+        lockedSound.play()
+      }
       setTimeout(() => {
           lockedMod[i].classList.remove("wobble-hor-bottom");
-      }, 1000);
+      }, 800);
   });
 }
 

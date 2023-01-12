@@ -12,6 +12,7 @@ let clickSound = document.getElementById("clickCard");
 let loseLife = document.getElementById("loseLife");
 let validPair = document.getElementById("validPair");
 let lockBoard = false;
+let sifflet = document.getElementById('sifflet')
 // Music Volume
 gameMusic.volume = 0.4;
 clickSound.volume = 0.3;
@@ -48,7 +49,7 @@ soundBtn.addEventListener("click", () => {
 // When the page load
 window.onload = function () {
   if(isActive()){
-    gameMusic.play();
+    // gameMusic.play();
     faSound.classList.replace("fa-volume-xmark", "fa-volume-high");
     soundBtn.style.backgroundColor = "#132b7b";
   } else{
@@ -68,7 +69,7 @@ const playerScoreElement = document.querySelector(".playerScore");
 playerScoreElement.innerText = playerScore;
 
 // Define a variable to store the remaining time (in seconds)
-let secondsLeft = 5;
+let secondsLeft = 25;
 
 // function to update the countdown + effects
 function updateCountdown() {
@@ -79,8 +80,18 @@ function updateCountdown() {
 
   // Then, hide the countdown
   if (secondsLeft === 0) {
+    if(isActive()){
+      setTimeout(() => {
+        sifflet.play()
+      }, 500);
+    }
     document.getElementById("countdownBlock").style.display = "none";
     document.getElementById("countdownBlock2").style.display = "block";
+    if(isActive()){
+    setTimeout(() => {
+      gameMusic.play();
+    }, 2000);
+    }
     cards.forEach((card) => {
       card.classList.remove("flip");
       lockBoard = false;
@@ -193,9 +204,11 @@ function unflipCards() {
     }
   });
 
+  /* It's checking if the player has any life left. If he does, it removes one life. If he doesn't, it
+  displays the game over modal. */
   if (currentLife > 0) {
     hearts[currentLife - 1].style.display = "none";
-  } else if (lifeLeft <= 0) {
+  } if(lifeLeft === -1) {
     let gameOverModal = document.getElementById("gameOverModal");
     let gameOver = document.getElementById("gameOver");
     gameMusic.pause();
