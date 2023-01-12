@@ -27,6 +27,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('home', './assets/js/_home.js')
     .addEntry('gs', './assets/js/_gamescript.js')
+    .addEntry('gamemod', './assets/js/_gamemod.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

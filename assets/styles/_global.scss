@@ -13,13 +13,15 @@ body {
   i {
     color: black;
   }
-  .playerScore{
+  .playerScore {
     color: #132b7b;
     font-weight: bold;
-    font-family: 'Solid';
+    font-family: "Solid";
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-  }
+    font-size: 1.1rem;
+    margin-right: 0.2rem;
+}
 
 }
 
@@ -32,6 +34,17 @@ body {
   height: 90%;
 
   .miniContainerProfile {
+
+    font-family: "Orbitron";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: rgba(173, 216, 230, 0.284);
+    width: 40%;
+    height: 70%;
+    
     #bonjourUser{
       h4 {
         // text-transform: uppercase;
@@ -50,9 +63,8 @@ body {
     }
     h5 {
       font-family: "Crimson Text";
-      text-decoration: underline;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       // text-decoration: underline;
       text-transform: uppercase;
       margin: 4.5rem 0 2rem 0;
@@ -67,28 +79,32 @@ body {
       }
     }
 
-    h6 {
-      padding: 0.5rem;
-      font-style: italic;
-
+    .blockDataProfile{
+      display: flex;
+      align-items: center;
+      
       i{
         color: #132b7b;
         margin: 0 2px;
-
+        font-size: 1.3rem;
+        margin-bottom: -2px
+      }
+      
+      h6 {
+        padding: 0.6rem 0;
+        // font-style: italic;
+        font-size: 1.3rem;
+        font-family: 'Solid';
+        // border: solid;
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+        
+      #coin{
+        width: 1.6rem;
       }
     }
-
-    font-family: "Orbitron";
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // border: solid 0.3px;
-    border-radius: 1rem;
-    background-color: rgba(173, 216, 230, 0.284);
-    width: 40%;
-    height: 70%;
-    // z-index: 2;
 
     .btnProfile {
       background-color: #800000c3;
@@ -231,9 +247,23 @@ body {
 
 
       #score{
+        display: flex;
+        align-items: center;
+
+        span:nth-child(1){
+        font-family: 'Crimson Text';
+        font-weight: bold;
+        font-size: 1.4rem;
+        margin: 0 0.3rem;
+        
+        }
+        
         i{
-          color: #132b7b;
+          color: black;
           margin: 0 2px;
+          margin-top: 4px;
+          margin-right: 0.4rem;
+          font-size: 1.1rem;;
 
         }
 
@@ -243,15 +273,18 @@ body {
       #life{
 
         #lifeLeft{
-
+          display: flex;
+          align-items: center;
           background-color: rgba(255, 255, 255, 0.612);
           border-radius: 0.5rem;
-          padding: 0.4rem 0.3rem;
-
+          padding: 1rem;
+          
           i{
             color: #800000c3;
-            margin: 0 2px;
-            font-size: 1.3rem;
+            // margin: 1rem 1rem;
+            font-size: 1.6rem;
+            animation: heartbeat 2s ease-in-out infinite both;
+            padding: 0 0.2rem;
           }
         }
       }
@@ -280,7 +313,6 @@ body {
   h1{
     font-family: "Crimson Text";
     font-size: 1.8rem;
-    // text-decoration: underline;
     text-transform: uppercase;
     font-weight: bold;
   }
@@ -334,14 +366,20 @@ body {
       .blocScorePseudo{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 17rem;
         display: flex;
+
+        img{
+          order: 3;
+        }
         
         .rankingScore{
           order: 2;
           padding: 1rem;
           font-family: 'Solid';
           color: $pokemonBlue; 
+          margin-left: auto;
         }
         
         .rankingPseudo{
@@ -349,11 +387,14 @@ body {
           font-weight: bold;
           font-style: italic;
           font-size: 0.8rem;
-
           text-transform: uppercase;
           // background-color: lightblue;
           
         }
       }
     }
+  }
+
+  #coin{
+    width: 1.6rem;
   }

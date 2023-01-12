@@ -20,7 +20,7 @@
 			{% for result in results %}
 				{% if (result.game.id) == 1  and i < 3 %}
 					<div class="blocScorePseudo">
-					<div class="rankingScore">{{ result.score }}</div>
+					<div class="rankingScore">{{ result.score }}</div><img src="{{asset('img/coin.gif')}}" id="coin" alt="coin">
 					<div class="rankingPseudo">{{ result.user.pseudo }}</div>
 					</div>
 					{% set i = i + 1 %}

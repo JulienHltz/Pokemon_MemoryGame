@@ -16,13 +16,31 @@
 
     {% for score in scoreTable%}
         {% if score.game.id == 1 %}
-        <h6><i class="fa-solid fa-star"></i> Memory : <span class="playerScore">{{ score.score }}</span> points</h6>
+        <div class="blockDataProfile">
+        <i class="fa-solid fa-star"></i>
+        <h6>
+         Memory : <span class="playerScore">{{ score.score }}</span>
+        </h6>
+         <img src="{{asset('img/coin.gif')}}" id="coin" alt="coin">
+        </div>
         {% endif %}
         {% if score.game.id == 2 %}
-        <h6><i class="fa-solid fa-star"></i> Type : <span class="playerScore">{{ score.score }}</span> points</h6>
+        <div class="blockDataProfile">
+        <i class="fa-solid fa-star"></i>
+        <h6>
+         Type : <span class="playerScore">{{ score.score }}</span>
+        </h6>
+         <img src="{{asset('img/coin.gif')}}" id="coin" alt="coin">
+        </div>
         {% endif %}
          {% if score.game.id == 3 %}
-        <h6><i class="fa-solid fa-star"></i> Generation : <span class="playerScore">{{ score.score }}</span> points</h6>
+        <div class="blockDataProfile">
+        <i class="fa-solid fa-star"></i>
+        <h6>
+         Generation : <span class="playerScore">{{ score.score }}</span>
+        </h6>
+         <img src="{{asset('img/coin.gif')}}" id="coin" alt="coin">
+        </div>
         {% endif %}
          
         
