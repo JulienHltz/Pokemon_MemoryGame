@@ -80,6 +80,7 @@ function updateCountdown() {
   // Then, hide the countdown
   if (secondsLeft === 0) {
     document.getElementById("countdownBlock").style.display = "none";
+    document.getElementById("countdownBlock2").style.display = "block";
     cards.forEach((card) => {
       card.classList.remove("flip");
       lockBoard = false;

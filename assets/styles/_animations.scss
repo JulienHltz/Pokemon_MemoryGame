@@ -209,3 +209,28 @@
 //  HeartBeat
 
 @keyframes heartbeat{from{transform:scale(1);transform-origin:center center;animation-timing-function:ease-out}10%{transform:scale(.91);animation-timing-function:ease-in}17%{transform:scale(.98);animation-timing-function:ease-out}33%{transform:scale(.87);animation-timing-function:ease-in}45%{transform:scale(1);animation-timing-function:ease-out}}
+
+// btn mod is locked
+
+@keyframes wobble-hor-bottom {
+        0%,
+        100% {
+          transform: translateX(0%);
+          transform-origin: 50% 50%;
+        }
+        15% {
+          transform: translateX(-30px) rotate(-6deg);
+        }
+        30% {
+          transform: translateX(15px) rotate(6deg);
+        }
+        45% {
+          transform: translateX(-15px) rotate(-3.6deg);
+        }
+        60% {
+          transform: translateX(9px) rotate(2.4deg);
+        }
+        75% {
+          transform: translateX(-6px) rotate(-1.2deg);
+        }
+      }
