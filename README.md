@@ -50,10 +50,14 @@ Background image start menu
 ----------------------------
 https://www.pixelstalk.net/hd-8-bit-backgrounds/
 
-# Music from Start Menu
+# Music
 
 Lullaby 8 Bit Arcade Loop 3
 https://www.tunepocket.com/8-bit-chiptune-music/page/2/
+
+GameOver
+https://mixkit.co/free-sound-effects/game-over/
+
 
 
 # Pikachu Loader
@@ -61,4 +65,11 @@ https://www.tunepocket.com/8-bit-chiptune-music/page/2/
 Running Pikachu GIF
 (Source: giphy.com)
 
+# IMAGES
+
+pokeball https://freesvg.org/poke-ball
+
+# API Sources
+
+https://pokebuildapi.fr/api/v1
 
